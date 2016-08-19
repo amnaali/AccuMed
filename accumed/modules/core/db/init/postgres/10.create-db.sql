@@ -1,0 +1,41 @@
+-- begin ACCUMED_PATIENT
+create table ACCUMED_PATIENT (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    VERSION integer,
+    --
+    patientid double precision,
+    healthnum text,
+    versioncode text,
+    expyear timestamp,
+    fname text,
+    lname text,
+    dob timestamp,
+    sex text,
+    address text,
+    city text,
+    province text,
+    postalcode text,
+    country text,
+    hphone text,
+    wphone text,
+    refdoc text,
+    famdoc text,
+    facilitynum text,
+    admitdate timestamp,
+    notes text,
+    batchid text,
+    hncheckdate timestamp,
+    status double precision,
+    response text,
+    hl7patid text,
+    flag varchar(1),
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_PATIENT

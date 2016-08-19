@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.patient.PatientEdit"
+        datasource="patientDs"
+        messagesPack="com.company.accumed.web.patient">
+    <dsContext>
+        <datasource id="patientDs"
+                    class="com.company.accumed.entity.Patient"
+                    view="_local"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid spacing="true">
+            <columns>
+                <column/>
+                <column flex="1.0"/>
+                <column/>
+                <column flex="1.0"/>
+            </columns>
+            <rows>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Patient ID"/>
+                    <textField datasource="patientDs"
+                               property="patientid"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Health Card Num."/>
+                    <textField datasource="patientDs"
+                               property="healthnum"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Version Code"/>
+                    <textField datasource="patientDs"
+                               property="versioncode"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Expiry Date"/>
+                    <dateField datasource="patientDs"
+                               property="expyear"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="First Name"/>
+                    <textField datasource="patientDs"
+                               property="fname"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Last Name"/>
+                    <textField datasource="patientDs"
+                               property="lname"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Date of Birth"/>
+                    <dateField datasource="patientDs"
+                               property="dob"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Sex"/>
+                    <textField datasource="patientDs"
+                               property="sex"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Address"/>
+                    <textField colspan="3"
+                               datasource="patientDs"
+                               property="address"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="City"/>
+                    <textField datasource="patientDs"
+                               property="city"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Province"/>
+                    <textField datasource="patientDs"
+                               property="province"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Postal Code"/>
+                    <textField datasource="patientDs"
+                               property="postalcode"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Country"/>
+                    <textField datasource="patientDs"
+                               property="country"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Home Phone"/>
+                    <textField datasource="patientDs"
+                               property="hphone"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Work Phone"/>
+                    <textField datasource="patientDs"
+                               property="wphone"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Refr. Doctor"/>
+                    <textField datasource="patientDs"
+                               property="refdoc"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Family Doctor"/>
+                    <textField datasource="patientDs"
+                               property="famdoc"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Facility Num."/>
+                    <textField datasource="patientDs"
+                               property="facilitynum"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Admit Date"/>
+                    <dateField datasource="patientDs"
+                               property="admitdate"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Notes"/>
+                    <textArea datasource="patientDs"
+                               property="notes"
+                               colspan="3" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

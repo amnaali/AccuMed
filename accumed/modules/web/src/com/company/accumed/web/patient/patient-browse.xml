@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.patient.PatientBrowse"
+        focusComponent="patientsTable"
+        lookupComponent="patientsTable"
+        messagesPack="com.company.accumed.web.patient">
+    <dsContext>
+        <collectionDatasource id="patientsDs"
+                              class="com.company.accumed.entity.Patient"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Patient e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="patientsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="patientsTable"
+                datasource="patientsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="patientsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="patientid"/>
+                <column id="healthnum"/>
+                <column id="versioncode"/>
+                <column id="expyear"/>
+                <column id="fname"/>
+                <column id="lname"/>
+                <column id="dob"/>
+                <column id="sex"/>
+                <column id="address"/>
+                <column id="city"/>
+                <column id="province"/>
+                <column id="postalcode"/>
+                <column id="country"/>
+                <column id="hphone"/>
+                <column id="wphone"/>
+                <column id="refdoc"/>
+                <column id="famdoc"/>
+                <column id="facilitynum"/>
+                <column id="admitdate"/>
+                <column id="notes"/>
+            </columns>
+            <rows datasource="patientsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="patientsTable.create"/>
+                <button id="editBtn"
+                        action="patientsTable.edit"/>
+                <button id="removeBtn"
+                        action="patientsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>
