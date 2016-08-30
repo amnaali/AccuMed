@@ -3,15 +3,11 @@ create table ACCUMED_PATIENT (
     ID uuid,
     CREATE_TS timestamp,
     CREATED_BY varchar(50),
-<<<<<<< HEAD
     VERSION integer not null,
-=======
->>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     UPDATE_TS timestamp,
     UPDATED_BY varchar(50),
-<<<<<<< HEAD
     --
     MEMBER_NUMBER varchar(20),
     VERSION_CODE varchar(12),
@@ -40,41 +36,10 @@ create table ACCUMED_PATIENT (
     response text,
     HL7_PATIENT_ID text,
     FAM_DOC_ID uuid,
-=======
-    VERSION integer,
-    --
-    patientid double precision,
-    healthnum text,
-    versioncode text,
-    expyear timestamp,
-    fname text,
-    lname text,
-    dob timestamp,
-    sex text,
-    address text,
-    city text,
-    province text,
-    postalcode text,
-    country text,
-    hphone text,
-    wphone text,
-    refdoc text,
-    famdoc text,
-    facilitynum text,
-    admitdate timestamp,
-    notes text,
-    batchid text,
-    hncheckdate timestamp,
-    status double precision,
-    response text,
-    hl7patid text,
-    flag varchar(1),
->>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
     --
     primary key (ID)
 )^
 -- end ACCUMED_PATIENT
-<<<<<<< HEAD
 -- begin ACCUMED_FACILITY
 create table ACCUMED_FACILITY (
     ID uuid,
@@ -177,5 +142,3 @@ create table ACCUMED_PATIENT_ADMISSION (
     primary key (ID)
 )^
 -- end ACCUMED_PATIENT_ADMISSION
-=======
->>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
