@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.speciality.SpecialityBrowse"
+        focusComponent="specialitiesTable"
+        lookupComponent="specialitiesTable"
+        messagesPack="com.company.accumed.web.speciality">
+    <dsContext>
+        <collectionDatasource id="specialitiesDs"
+                              class="com.company.accumed.entity.Speciality"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Speciality e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="specialitiesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="specialitiesTable"
+                datasource="specialitiesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="specialitiesTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="specialtyCode"/>
+                <column id="specialtyName"/>
+            </columns>
+            <rows datasource="specialitiesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="specialitiesTable.create"/>
+                <button id="editBtn"
+                        action="specialitiesTable.edit"/>
+                <button id="removeBtn"
+                        action="specialitiesTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

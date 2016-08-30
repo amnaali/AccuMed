@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.provider.ProviderBrowse"
+        focusComponent="providersTable"
+        lookupComponent="providersTable"
+        messagesPack="com.company.accumed.web.provider">
+    <dsContext>
+        <collectionDatasource id="providersDs"
+                              class="com.company.accumed.entity.Provider"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Provider e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="providersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="providersTable"
+                datasource="providersDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="providersTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="providerId"/>
+                <column id="title"/>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="middleName"/>
+                <column id="email"/>
+                <column id="addressLine1"/>
+                <column id="addressLine2"/>
+                <column id="city"/>
+                <column id="province"/>
+                <column id="postalCode"/>
+                <column id="workPhone"/>
+                <column id="cellPhone"/>
+                <column id="groupNumber"/>
+            </columns>
+            <rows datasource="providersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="providersTable.create"/>
+                <button id="editBtn"
+                        action="providersTable.edit"/>
+                <button id="removeBtn"
+                        action="providersTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

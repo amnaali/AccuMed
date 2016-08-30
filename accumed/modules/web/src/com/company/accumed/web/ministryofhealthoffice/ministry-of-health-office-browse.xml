@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.ministryofhealthoffice.MinistryOfHealthOfficeBrowse"
+        focusComponent="ministryOfHealthOfficesTable"
+        lookupComponent="ministryOfHealthOfficesTable"
+        messagesPack="com.company.accumed.web.ministryofhealthoffice">
+    <dsContext>
+        <collectionDatasource id="ministryOfHealthOfficesDs"
+                              class="com.company.accumed.entity.MinistryOfHealthOffice"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$MinistryOfHealthOffice e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="ministryOfHealthOfficesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ministryOfHealthOfficesTable"
+                datasource="ministryOfHealthOfficesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="ministryOfHealthOfficesTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="officeCode"/>
+                <column id="officeCity"/>
+                <column id="claimCardCode"/>
+            </columns>
+            <rows datasource="ministryOfHealthOfficesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ministryOfHealthOfficesTable.create"/>
+                <button id="editBtn"
+                        action="ministryOfHealthOfficesTable.edit"/>
+                <button id="removeBtn"
+                        action="ministryOfHealthOfficesTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

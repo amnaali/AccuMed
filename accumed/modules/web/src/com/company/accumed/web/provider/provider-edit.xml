@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.provider.ProviderEdit"
+        datasource="providerDs"
+        messagesPack="com.company.accumed.web.provider">
+    <dsContext>
+        <datasource id="providerDs"
+                    class="com.company.accumed.entity.Provider"
+                    view="provider-view"/>
+        <collectionDatasource id="specialityDs"
+                              allowCommit="false"
+                              class="com.company.accumed.entity.Speciality"
+                              view="_local">
+            <query>
+                <![CDATA[select s from accumed$Speciality s]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="ministryOfHealthOfficeDs"
+                              allowCommit="false"
+                              class="com.company.accumed.entity.MinistryOfHealthOffice"
+                              view="_local">
+            <query>
+                <![CDATA[select m from accumed$MinistryOfHealthOffice m]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true">
+        <grid align="TOP_CENTER"
+              height="532px"
+              spacing="true">
+            <columns>
+                <column/>
+                <column flex="1.0"/>
+                <column/>
+                <column flex="1.0"/>
+                <column flex="0.0"/>
+                <column flex="0.0"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="Provider ID"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="providerId"
+                               width="100%"/>
+                    <label value="Group #"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="groupNumber"
+                               width="178px"/>
+                    <label value="Title"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="title"
+                               width="178px"/>
+                </row>
+                <row>
+                    <label value="First Name"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="firstName"
+                               width="100%"/>
+                    <label value="Middle Name"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="middleName"
+                               width="178px"/>
+                    <label value="Last Name"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="lastName"
+                               width="178px"/>
+                </row>
+                <row>
+                    <label value="Email "/>
+                    <textField colspan="3"
+                               datasource="providerDs"
+                               height="25px"
+                               property="email"
+                               width="100%"/>
+                    <label value="Specialty"/>
+                    <lookupField datasource="providerDs"
+                                 height="25px"
+                                 optionsDatasource="specialityDs"
+                                 property="primarySpecialty"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label value="Address Line 1"/>
+                    <textField colspan="3"
+                               datasource="providerDs"
+                               height="25px"
+                               property="addressLine1"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="Address Line 2"/>
+                    <textField colspan="3"
+                               datasource="providerDs"
+                               height="25px"
+                               property="addressLine2"
+                               width="100%"/>
+                    <label height="17px"
+                           value="City"/>
+                    <textField datasource="providerDs"
+                               height="24px"
+                               property="city"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="Province"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="province"
+                               width="129px"/>
+                    <label value="Postal Code"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="postalCode"
+                               width="94px"/>
+                    <label height="17px"
+                           value="Country"/>
+                    <textField datasource="providerDs"
+                               height="25px"
+                               property="country"
+                               width="130px"/>
+                </row>
+                <row>
+                    <label value="Work Phone"/>
+                    <maskedField datasource="providerDs"
+                                 height="25px"
+                                 mask="(###)###-####"
+                                 property="workPhone"/>
+                    <label value="Cell Phone"/>
+                    <maskedField datasource="providerDs"
+                                 height="25px"
+                                 mask="(###)###-####"
+                                 property="cellPhone"/>
+                </row>
+                <row>
+                    <label value="Ministry Of Health City"/>
+                    <lookupField datasource="providerDs"
+                                 height="25px"
+                                 optionsDatasource="ministryOfHealthOfficeDs"
+                                 property="ministryOfHealthOffice"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label/>
+                    <label/>
+                    <frame id="windowActions"
+                           align="TOP_CENTER"
+                           colspan="2"
+                           screen="editWindowActions"/>
+                </row>
+            </rows>
+        </grid>
+    </layout>
+</window>

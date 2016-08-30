@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.patient.PatientEdit"
+        datasource="patientDs"
+        messagesPack="com.company.accumed.web.patient">
+    <dsContext>
+        <datasource id="patientDs"
+                    class="com.company.accumed.entity.Patient"
+                    view="patient-edit">
+            <collectionDatasource id="admissionsDs"
+                                  property="admissions"/>
+        </datasource>
+        <collectionDatasource id="patientAdmissionsDs"
+                              class="com.company.accumed.entity.PatientAdmission"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$PatientAdmission e
+where e.patient.id = :ds$patientDs
+order by e.admitDate]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="famDocDs"
+                              class="com.company.accumed.entity.Provider"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from accumed$Provider e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout spacing="true">
+        <grid align="TOP_CENTER"
+              spacing="true">
+            <columns>
+                <column/>
+                <column flex="1.0"/>
+                <column/>
+                <column flex="1.0"/>
+                <column flex="0.0"/>
+                <column flex="0.0"/>
+            </columns>
+            <rows>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Health Card Num."/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="memberNumber"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Expiry Date"/>
+                    <dateField datasource="patientDs"
+                               height="25px"
+                               property="expiredOn"
+                               resolution="DAY"/>
+                    <label align="MIDDLE_LEFT"
+                           value="Version Code"/>
+                    <textField align="BOTTOM_LEFT"
+                               datasource="patientDs"
+                               height="25px"
+                               property="versionCode"
+                               width="53px"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           height="25px"
+                           value="First Name"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="firstName"
+                               width="100%"/>
+                    <label value="Middle Name"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="middleName"
+                               width="178px"/>
+                    <label value="Last Name"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="lastName"
+                               width="178px"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Date of Birth"/>
+                    <dateField datasource="patientDs"
+                               height="25px"
+                               property="birthDate"
+                               resolution="DAY"/>
+                    <label value="Sex"/>
+                    <optionsGroup datasource="patientDs"
+                                  orientation="horizontal"
+                                  property="gender"/>
+                </row>
+                <row>
+                    <label value="Address Line 1"/>
+                    <textField colspan="3"
+                               datasource="patientDs"
+                               height="25px"
+                               property="addressLine1"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Address Line 2"/>
+                    <textField colspan="3"
+                               datasource="patientDs"
+                               height="25px"
+                               property="addressLine2"
+                               width="100%"/>
+                    <label align="MIDDLE_LEFT"
+                           height="17px"
+                           value="City"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="city"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="Province"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="province"
+                               width="100%"/>
+                    <label value="Postal Code"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="postalCode"
+                               width="100%"/>
+                    <label height="17px"
+                           value="Country"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="country"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Home Phone"/>
+                    <maskedField datasource="patientDs"
+                                 height="25px"
+                                 mask="(###)###-####"
+                                 property="homePhone"
+                                 width="100%"/>
+                    <label value="Work Phone"/>
+                    <maskedField datasource="patientDs"
+                                 height="25px"
+                                 mask="(###)###-####"
+                                 property="workPhone"/>
+                    <label value="Cell Phone"/>
+                    <maskedField datasource="patientDs"
+                                 height="25px"
+                                 mask="(###)###-####"
+                                 property="cellPhone"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Referring Doctor"/>
+                    <textField datasource="patientDs"
+                               height="25px"
+                               property="referringDoctor"
+                               width="100%"/>
+                    <label value="Family Doctor"/>
+                    <lookupPickerField id="famDocField"
+                                       datasource="patientDs"
+                                       height="25px"
+                                       optionsDatasource="famDocDs"
+                                       property="famDoc"
+                                       width="100%"/>
+                </row>
+                <row>
+                    <label value="Email"/>
+                    <textField colspan="4"
+                               datasource="patientDs"
+                               height="25px"
+                               property="email"
+                               width="559px">
+                        <validator class="com.haulmont.cuba.gui.components.validators.EmailValidator"/>
+                    </textField>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Notes"/>
+                    <richTextArea colspan="4"
+                                  datasource="patientDs"
+                                  height="150px"
+                                  property="notes"
+                                  width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="Patient Admissions"/>
+                    <table id="pAdmissionTable"
+                           colspan="4"
+                           editable="true"
+                           height="110px"
+                           width="100%">
+                        <actions>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="admitDate"
+                                    editable="true"/>
+                            <column id="facility"
+                                    editable="true"/>
+                        </columns>
+                        <rows datasource="admissionsDs"/>
+                        <buttonsPanel>
+                            <button action="pAdmissionTable.create"/>
+                            <button action="pAdmissionTable.edit"/>
+                            <button action="pAdmissionTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </row>
+                <row>
+                    <label/>
+                    <label/>
+                    <frame id="windowActions"
+                           align="TOP_CENTER"
+                           colspan="2"
+                           screen="editWindowActions"/>
+                </row>
+            </rows>
+        </grid>
+    </layout>
+</window>

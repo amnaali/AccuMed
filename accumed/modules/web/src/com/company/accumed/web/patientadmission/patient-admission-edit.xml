@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.patientadmission.PatientAdmissionEdit"
+        datasource="patientAdmissionDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.accumed.web.patientadmission">
+    <dsContext>
+        <datasource id="patientAdmissionDs"
+                    class="com.company.accumed.entity.PatientAdmission"
+                    view="admission-view"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="patientAdmissionDs">
+            <column width="250px">
+                <field id="facility"/>
+                <field id="admitDate"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

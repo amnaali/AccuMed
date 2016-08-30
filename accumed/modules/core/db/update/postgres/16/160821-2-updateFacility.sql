@@ -1,0 +1,10 @@
+alter table ACCUMED_FACILITY add column VERSION integer not null default 0 ;
+alter table ACCUMED_FACILITY add column UPDATE_TS timestamp ;
+alter table ACCUMED_FACILITY add column UPDATED_BY varchar(50) ;
+alter table ACCUMED_FACILITY add column DELETE_TS timestamp ;
+alter table ACCUMED_FACILITY add column DELETED_BY varchar(50) ;
+alter table ACCUMED_FACILITY drop column UUID cascade ;
+update ACCUMED_FACILITY set FACILITY_CODE = '' where FACILITY_CODE is null ;
+alter table ACCUMED_FACILITY alter column FACILITY_CODE set not null ;
+update ACCUMED_FACILITY set FACILITY_NAME = '' where FACILITY_NAME is null ;
+alter table ACCUMED_FACILITY alter column FACILITY_NAME set not null ;

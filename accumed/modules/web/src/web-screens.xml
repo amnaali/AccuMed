@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="/screens.xml"/>
+    <screen id="accumed$Patient.browse"
+            template="com/company/accumed/web/patient/patient-browse.xml"/>
+    <screen id="accumed$Patient.edit"
+            template="com/company/accumed/web/patient/patient-edit.xml"/>
+    <screen id="accumed$Facility.browse"
+            template="com/company/accumed/web/facility/facility-browse.xml"/>
+    <screen id="accumed$Facility.edit"
+            template="com/company/accumed/web/facility/facility-edit.xml"/>
+    <screen id="accumed$MinistryOfHealthOffice.browse"
+            template="com/company/accumed/web/ministryofhealthoffice/ministry-of-health-office-browse.xml"/>
+    <screen id="accumed$MinistryOfHealthOffice.edit"
+            template="com/company/accumed/web/ministryofhealthoffice/ministry-of-health-office-edit.xml"/>
+    <screen id="accumed$Speciality.browse"
+            template="com/company/accumed/web/speciality/speciality-browse.xml"/>
+    <screen id="accumed$Speciality.edit"
+            template="com/company/accumed/web/speciality/speciality-edit.xml"/>
+    <screen id="accumed$Provider.browse"
+            template="com/company/accumed/web/provider/provider-browse.xml"/>
+    <screen id="accumed$Provider.edit"
+            template="com/company/accumed/web/provider/provider-edit.xml"/>
+    <screen id="accumed$PatientAdmission.edit"
+            template="com/company/accumed/web/patientadmission/patient-admission-edit.xml"/>
+</screen-config>
