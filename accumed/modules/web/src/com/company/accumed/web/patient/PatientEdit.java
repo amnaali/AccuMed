@@ -1,6 +1,7 @@
 package com.company.accumed.web.patient;
 
 import com.company.accumed.entity.Facility;
+import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.components.AbstractEditor;
 import com.company.accumed.entity.Patient;
 import com.company.accumed.entity.PatientAdmission;
@@ -11,15 +12,14 @@ import javax.inject.Inject;
 import java.util.*;
 
 public class PatientEdit extends AbstractEditor<Patient> {
-  /*  @Inject
+    @Inject
     protected CollectionDatasource<PatientAdmission, UUID> admissionsDs;
 
+    @Inject
+    private Metadata metadata;
+    
    public void addAdmission() {
         admissionsDs.addItem(metadata.create(PatientAdmission.class));
     }
-*/
-//   public void addAdmission() {
-//        patientAdmissionsDs.addItem(metadata.create(PatientAdmission.class));
-//    }
 
 }

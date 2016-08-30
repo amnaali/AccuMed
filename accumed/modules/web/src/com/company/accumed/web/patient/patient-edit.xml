@@ -196,10 +196,9 @@ order by e.admitDate]]>
                            height="110px"
                            width="100%">
                         <actions>
-                            <action id="create"
-                                    openType="DIALOG"/>
-                            <action id="edit"
-                                    openType="DIALOG"/>
+                            <action id="add"
+                                    caption="Add"
+                                    invoke="addAdmission"/>
                             <action id="remove"/>
                         </actions>
                         <columns>
@@ -210,8 +209,7 @@ order by e.admitDate]]>
                         </columns>
                         <rows datasource="admissionsDs"/>
                         <buttonsPanel>
-                            <button action="pAdmissionTable.create"/>
-                            <button action="pAdmissionTable.edit"/>
+                            <button action="pAdmissionTable.add"/>
                             <button action="pAdmissionTable.remove"/>
                         </buttonsPanel>
                     </table>
