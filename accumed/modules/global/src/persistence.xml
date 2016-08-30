@@ -4,10 +4,13 @@
     <persistence-unit name="accumed"
                       transaction-type="RESOURCE_LOCAL">
         <class>com.company.accumed.entity.Patient</class>
+<<<<<<< HEAD
         <class>com.company.accumed.entity.Facility</class>
         <class>com.company.accumed.entity.Provider</class>
         <class>com.company.accumed.entity.Speciality</class>
         <class>com.company.accumed.entity.MinistryOfHealthOffice</class>
         <class>com.company.accumed.entity.PatientAdmission</class>
+=======
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
     </persistence-unit>
 </persistence>

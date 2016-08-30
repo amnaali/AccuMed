@@ -36,9 +36,12 @@ cuba {
     tomcat {
         dir = "$project.rootDir/build/tomcat"
     }
+<<<<<<< HEAD
     ide {
         vcs = 'Git'
     }
+=======
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
 }
 
 def postgres = 'org.postgresql:postgresql:9.4-1201-jdbc41'
@@ -109,22 +112,36 @@ configure(coreModule) {
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
         dbms = 'postgres'
+<<<<<<< HEAD
         dbmsVersion = 'null'
         host = 'localhost:5786'
         dbName = 'billing'
         dbUser = 'postgres'
         dbPassword = 'malina'
         connectionParams = '?currentSchema=ops'
+=======
+        host = 'localhost:5432'
+        dbName = 'accumed'
+        dbUser = 'postgres'
+        dbPassword = 'accumed'
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
         dbms = 'postgres'
+<<<<<<< HEAD
         dbmsVersion = 'null'
         host = 'localhost:5786'
         dbName = 'billing'
         dbUser = 'postgres'
         dbPassword = 'malina'
         connectionParams = '?currentSchema=ops'
+=======
+        host = 'localhost:5432'
+        dbName = 'accumed'
+        dbUser = 'postgres'
+        dbPassword = 'accumed'
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
     }
 }
 
@@ -146,7 +163,10 @@ configure(guiModule) {
 configure(webModule) {
     configurations {
         webcontent
+<<<<<<< HEAD
         themes
+=======
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
         
     }
 
@@ -157,8 +177,11 @@ configure(webModule) {
         webcontent("com.haulmont.cuba:cuba-web:$cubaVersion:web@zip")
         webcontent("com.haulmont.cuba:cuba-web-toolkit:$cubaVersion:web@zip")
         testCompile("com.haulmont.cuba:cuba-client-tests:$cubaVersion")
+<<<<<<< HEAD
         themes("com.haulmont.cuba:cuba-web-themes:$cubaVersion")
         provided("com.haulmont.cuba:cuba-web-themes:$cubaVersion")
+=======
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
 
     }
 
@@ -193,12 +216,18 @@ configure(webModule) {
 
     task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
         appName = 'app'
+<<<<<<< HEAD
         appJars('cuba-web', 'cuba-rest-api', 'cuba-global', 'cuba-gui', 'cuba-client', 
                 'app-global', 'app-gui', 'app-web')
     }
     task buildScssThemes(type: CubaWebScssThemeCreation)
     task deployThemes(type: CubaDeployThemeTask, dependsOn: buildScssThemes)
     assemble.dependsOn buildScssThemes
+=======
+        appJars('cuba-rest-api', 'cuba-web', 'cuba-client', 'cuba-gui', 'cuba-global', 
+                'app-global', 'app-gui', 'app-web')
+    }
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
 }
 
 

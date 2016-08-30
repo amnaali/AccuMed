@@ -3,9 +3,12 @@
     <menu id="application"
           insertBefore="administration">
         <item id="accumed$Patient.browse"/>
+<<<<<<< HEAD
         <item id="accumed$Facility.browse"/>
         <item id="accumed$MinistryOfHealthOffice.browse"/>
         <item id="accumed$Speciality.browse"/>
         <item id="accumed$Provider.browse"/>
+=======
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
     </menu>
 </menu-config>

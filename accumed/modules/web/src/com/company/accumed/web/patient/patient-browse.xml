@@ -8,7 +8,11 @@
     <dsContext>
         <collectionDatasource id="patientsDs"
                               class="com.company.accumed.entity.Patient"
+<<<<<<< HEAD
                               view="patientList">
+=======
+                              view="_local">
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
             <query>
                 <![CDATA[select e from accumed$Patient e]]>
             </query>
@@ -29,6 +33,7 @@
                 <action id="remove"/>
             </actions>
             <columns>
+<<<<<<< HEAD
                 <column id="memberNumber"/>
                 <column id="firstName"/>
                 <column id="lastName"/>
@@ -37,6 +42,28 @@
                 <column id="addressLine1"/>
                 <column id="city"/>
                 <column id="province"/>
+=======
+                <column id="patientid"/>
+                <column id="healthnum"/>
+                <column id="versioncode"/>
+                <column id="expyear"/>
+                <column id="fname"/>
+                <column id="lname"/>
+                <column id="dob"/>
+                <column id="sex"/>
+                <column id="address"/>
+                <column id="city"/>
+                <column id="province"/>
+                <column id="postalcode"/>
+                <column id="country"/>
+                <column id="hphone"/>
+                <column id="wphone"/>
+                <column id="refdoc"/>
+                <column id="famdoc"/>
+                <column id="facilitynum"/>
+                <column id="admitdate"/>
+                <column id="notes"/>
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
             </columns>
             <rows datasource="patientsDs"/>
             <rowsCount/>

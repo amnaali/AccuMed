@@ -5,6 +5,7 @@
             template="com/company/accumed/web/patient/patient-browse.xml"/>
     <screen id="accumed$Patient.edit"
             template="com/company/accumed/web/patient/patient-edit.xml"/>
+<<<<<<< HEAD
     <screen id="accumed$Facility.browse"
             template="com/company/accumed/web/facility/facility-browse.xml"/>
     <screen id="accumed$Facility.edit"
@@ -23,4 +24,6 @@
             template="com/company/accumed/web/provider/provider-edit.xml"/>
     <screen id="accumed$PatientAdmission.edit"
             template="com/company/accumed/web/patientadmission/patient-admission-edit.xml"/>
+=======
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
 </screen-config>

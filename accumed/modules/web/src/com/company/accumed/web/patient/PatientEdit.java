@@ -1,5 +1,6 @@
 package com.company.accumed.web.patient;
 
+<<<<<<< HEAD
 import com.company.accumed.entity.Facility;
 import com.haulmont.cuba.gui.components.AbstractEditor;
 import com.company.accumed.entity.Patient;
@@ -22,4 +23,10 @@ public class PatientEdit extends AbstractEditor<Patient> {
 //        patientAdmissionsDs.addItem(metadata.create(PatientAdmission.class));
 //    }
 
+=======
+import com.haulmont.cuba.gui.components.AbstractEditor;
+import com.company.accumed.entity.Patient;
+
+public class PatientEdit extends AbstractEditor<Patient> {
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
 }

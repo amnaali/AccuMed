@@ -5,9 +5,15 @@
               maxTotal="20"
               maxWaitMillis="5000"
               name="jdbc/CubaDS"
+<<<<<<< HEAD
               password="malina"
               type="javax.sql.DataSource"
               url="jdbc:postgresql://localhost:5786/billing?currentSchema=ops"
+=======
+              password="accumed"
+              type="javax.sql.DataSource"
+              url="jdbc:postgresql://localhost:5432/accumed"
+>>>>>>> 802bc6e5bed0cad934e8937b5e727eb925303994
               username="postgres"/>
     <!-- Switch off session serialization -->
     <Manager pathname=""/>
