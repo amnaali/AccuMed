@@ -87,18 +87,9 @@ public class Patient extends BaseUuidEntity implements Versioned, SoftDelete, Up
     @Column(name = "CELL_PHONE", length = 20)
     protected String cellPhone;
 
-    @Column(name = "REFERRING_DOCTOR")
-    protected String referringDoctor;
-
-    @Column(name = "FAMILY_DOCTOR")
-    protected String familyDoctor;
-
-    @Column(name = "FACILITY_CODE")
-    protected String facilityCode;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "ADMIT_DATE")
-    protected Date admitDate;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FAMILY_DOCTOR_ID")
+    protected Provider familyDoctor;
 
     @Lob
     @Column(name = "notes")
@@ -122,10 +113,6 @@ public class Patient extends BaseUuidEntity implements Versioned, SoftDelete, Up
     @OneToMany(mappedBy = "patient")
     protected Set<PatientAdmission> admissions;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FAM_DOC_ID")
-    protected Provider famDoc;
-
     @Version
     @Column(name = "VERSION", nullable = false)
     protected Integer version;
@@ -142,14 +129,15 @@ public class Patient extends BaseUuidEntity implements Versioned, SoftDelete, Up
     @Column(name = "UPDATED_BY", length = 50)
     protected String updatedBy;
 
-
-    public void setFamDoc(Provider famDoc) {
-        this.famDoc = famDoc;
+    public Provider getFamilyDoctor() {
+        return familyDoctor;
     }
 
-    public Provider getFamDoc() {
-        return famDoc;
+    public void setFamilyDoctor(Provider familyDoctor) {
+        this.familyDoctor = familyDoctor;
     }
+
+
 
 
     public void setAdmissions(Set<PatientAdmission> admissions) {
@@ -160,14 +148,6 @@ public class Patient extends BaseUuidEntity implements Versioned, SoftDelete, Up
         return admissions;
     }
 
-
-    public void setFacilityCode(String facilityCode) {
-        this.facilityCode = facilityCode;
-    }
-
-    public String getFacilityCode() {
-        return facilityCode;
-    }
 
 
     @Override
@@ -349,30 +329,6 @@ public class Patient extends BaseUuidEntity implements Versioned, SoftDelete, Up
 
     public String getWorkPhone() {
         return workPhone;
-    }
-
-    public void setReferringDoctor(String referringDoctor) {
-        this.referringDoctor = referringDoctor;
-    }
-
-    public String getReferringDoctor() {
-        return referringDoctor;
-    }
-
-    public void setFamilyDoctor(String familyDoctor) {
-        this.familyDoctor = familyDoctor;
-    }
-
-    public String getFamilyDoctor() {
-        return familyDoctor;
-    }
-
-    public void setAdmitDate(Date admitDate) {
-        this.admitDate = admitDate;
-    }
-
-    public Date getAdmitDate() {
-        return admitDate;
     }
 
     public void setHnCheckDate(Date hnCheckDate) {

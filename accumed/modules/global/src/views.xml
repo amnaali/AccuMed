@@ -22,8 +22,6 @@
           name="provider-view">
         <property name="primarySpecialty"
                   view="_minimal"/>
-        <property name="ministryOfHealthOffice"
-                  view="_minimal"/>
     </view>
     <view class="com.company.accumed.entity.PatientAdmission"
           extends="_local"
@@ -39,7 +37,36 @@
             <property name="facility"
                       view="_minimal"/>
         </property>
-        <property name="famDoc"
+    </view>
+    <view class="com.company.accumed.entity.Facility"
+          extends="_local"
+          name="facility-view"/>
+    <view class="com.company.accumed.entity.Claim"
+          extends="_local"
+          name="claim-view">
+        <property name="patient"
+                  view="_minimal">
+            <property name="memberNumber"/>
+        </property>
+        <property name="referredBy"
+                  view="_minimal"/>
+        <property name="facility"
+                  view="_minimal"/>
+        <property name="provider"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.accumed.entity.Claim"
+          extends="_local"
+          name="claim-edit">
+        <property name="patient"
+                  view="_minimal"/>
+        <property name="referredBy"
+                  view="_minimal"/>
+        <property name="facility"
+                  view="_minimal"/>
+        <property name="claimLine"
+                  view="_local"/>
+        <property name="provider"
                   view="_minimal"/>
     </view>
 </views>

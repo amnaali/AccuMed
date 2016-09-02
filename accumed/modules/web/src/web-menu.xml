@@ -7,5 +7,6 @@
         <item id="accumed$MinistryOfHealthOffice.browse"/>
         <item id="accumed$Speciality.browse"/>
         <item id="accumed$Provider.browse"/>
+        <item id="accumed$Claim.browse"/>
     </menu>
 </menu-config>

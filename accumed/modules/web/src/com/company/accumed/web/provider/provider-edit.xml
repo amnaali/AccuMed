@@ -127,22 +127,22 @@
                                width="130px"/>
                 </row>
                 <row>
-                    <label value="Work Phone"/>
+                    <label value="Phone Number"/>
                     <maskedField datasource="providerDs"
                                  height="25px"
                                  mask="(###)###-####"
                                  property="workPhone"/>
-                    <label value="Cell Phone"/>
+                    <label value="Fax Number"/>
                     <maskedField datasource="providerDs"
                                  height="25px"
                                  mask="(###)###-####"
-                                 property="cellPhone"/>
+                                 property="faxNumber"/>
                 </row>
                 <row>
                     <label value="Ministry Of Health City"/>
-                    <lookupField datasource="providerDs"
+                    <lookupField id="ministryOfHealthOffice"
+                                 datasource="providerDs"
                                  height="25px"
-                                 optionsDatasource="ministryOfHealthOfficeDs"
                                  property="ministryOfHealthOffice"
                                  width="100%"/>
                 </row>

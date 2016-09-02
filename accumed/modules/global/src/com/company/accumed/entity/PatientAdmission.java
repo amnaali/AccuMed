@@ -3,6 +3,8 @@ package com.company.accumed.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import org.springframework.util.ObjectUtils;
+
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -13,7 +15,7 @@ import javax.persistence.TemporalType;
 
 @Table(name = "ACCUMED_PATIENT_ADMISSION")
 @Entity(name = "accumed$PatientAdmission")
-public class PatientAdmission extends StandardEntity {
+public class PatientAdmission extends StandardEntity implements Comparable<PatientAdmission> {
     private static final long serialVersionUID = 6583659411541910193L;
 
     @ManyToOne(optional = false)
@@ -54,5 +56,12 @@ public class PatientAdmission extends StandardEntity {
         return patient;
     }
 
-
+    @Override
+    public int compareTo(PatientAdmission o) {
+        if (this.createTs == null) {
+            return -1;
+        }
+        return (o.createTs == null) ? Integer.MAX_VALUE : (o.createTs.compareTo(this.createTs));
+    }
 }
+

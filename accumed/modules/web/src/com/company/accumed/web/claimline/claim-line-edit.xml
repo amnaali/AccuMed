@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.claimline.ClaimLineEdit"
+        datasource="claimLineDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.accumed.web.claimline">
+    <dsContext>
+        <datasource id="claimLineDs"
+                    class="com.company.accumed.entity.ClaimLine"
+                    view="_local"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="claimLineDs">
+            <column width="250px">
+                <field id="serviceCode"/>
+                <field id="diagnosticCode"/>
+                <field id="noOfServices"/>
+                <field id="fee"/>
+                <field id="serviceDate"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -23,4 +23,10 @@
             template="com/company/accumed/web/provider/provider-edit.xml"/>
     <screen id="accumed$PatientAdmission.edit"
             template="com/company/accumed/web/patientadmission/patient-admission-edit.xml"/>
+    <screen id="accumed$Claim.browse"
+            template="com/company/accumed/web/claim/claim-browse.xml"/>
+    <screen id="accumed$Claim.edit"
+            template="com/company/accumed/web/claim/claim-edit.xml"/>
+    <screen id="accumed$ClaimLine.edit"
+            template="com/company/accumed/web/claimline/claim-line-edit.xml"/>
 </screen-config>

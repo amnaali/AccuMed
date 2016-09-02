@@ -60,16 +60,45 @@ public class Provider extends StandardEntity {
     @Column(name = "CELL_PHONE", length = 20)
     protected String cellPhone;
 
-    @Column(name = "GROUP_NUMBER")
-    protected Integer groupNumber;
+    @Column(name = "FAX_NUMBER", length = 20)
+    protected String faxNumber;
+
+    @Column(name = "GROUP_NUMBER", length = 10)
+    protected String groupNumber;
 
     @ManyToOne
     @JoinColumn(name = "PRIMARY_SPECIALTY_ID")
     protected Speciality primarySpecialty;
 
-    @ManyToOne
-    @JoinColumn(name = "MINISTRY_OF_HEALTH_OFFICE_ID")
-    protected MinistryOfHealthOffice ministryOfHealthOffice;
+    @Column(name = "MINISTRY_OF_HEALTH_OFFICE", length = 5)
+    protected String ministryOfHealthOffice;
+
+    public String getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(String groupNumber) {
+        this.groupNumber = groupNumber;
+    }
+
+
+    public void setFaxNumber(String faxNumber) {
+        this.faxNumber = faxNumber;
+    }
+
+    public String getFaxNumber() {
+        return faxNumber;
+    }
+
+
+    public String getMinistryOfHealthOffice() {
+        return ministryOfHealthOffice;
+    }
+
+    public void setMinistryOfHealthOffice(String ministryOfHealthOffice) {
+        this.ministryOfHealthOffice = ministryOfHealthOffice;
+    }
+
 
     public void setCountry(String country) {
         this.country = country;
@@ -79,14 +108,6 @@ public class Provider extends StandardEntity {
         return country;
     }
 
-
-    public void setMinistryOfHealthOffice(MinistryOfHealthOffice ministryOfHealthOffice) {
-        this.ministryOfHealthOffice = ministryOfHealthOffice;
-    }
-
-    public MinistryOfHealthOffice getMinistryOfHealthOffice() {
-        return ministryOfHealthOffice;
-    }
 
 
     public Speciality getPrimarySpecialty() {
@@ -201,14 +222,6 @@ public class Provider extends StandardEntity {
 
     public String getCellPhone() {
         return cellPhone;
-    }
-
-    public void setGroupNumber(Integer groupNumber) {
-        this.groupNumber = groupNumber;
-    }
-
-    public Integer getGroupNumber() {
-        return groupNumber;
     }
 
 

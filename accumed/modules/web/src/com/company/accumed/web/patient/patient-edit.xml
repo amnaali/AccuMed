@@ -27,6 +27,9 @@ order by e.admitDate]]>
                 <![CDATA[select e from accumed$Provider e]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="facilityDs"
+                              class="com.company.accumed.entity.Facility"
+                              view="facility-view"/>
     </dsContext>
     <layout spacing="true">
         <grid align="TOP_CENTER"
@@ -154,21 +157,6 @@ order by e.admitDate]]>
                                  property="cellPhone"/>
                 </row>
                 <row>
-                    <label align="MIDDLE_LEFT"
-                           value="Referring Doctor"/>
-                    <textField datasource="patientDs"
-                               height="25px"
-                               property="referringDoctor"
-                               width="100%"/>
-                    <label value="Family Doctor"/>
-                    <lookupPickerField id="famDocField"
-                                       datasource="patientDs"
-                                       height="25px"
-                                       optionsDatasource="famDocDs"
-                                       property="famDoc"
-                                       width="100%"/>
-                </row>
-                <row>
                     <label value="Email"/>
                     <textField colspan="4"
                                datasource="patientDs"
@@ -193,7 +181,7 @@ order by e.admitDate]]>
                     <table id="pAdmissionTable"
                            colspan="4"
                            editable="true"
-                           height="110px"
+                           height="200px"
                            width="100%">
                         <actions>
                             <action id="add"
@@ -203,9 +191,8 @@ order by e.admitDate]]>
                         </actions>
                         <columns>
                             <column id="admitDate"
-                                    editable="true"/>
-                            <column id="facility"
-                                    editable="true"/>
+                                    editable="true"
+                                    width="140px"/>
                         </columns>
                         <rows datasource="admissionsDs"/>
                         <buttonsPanel>

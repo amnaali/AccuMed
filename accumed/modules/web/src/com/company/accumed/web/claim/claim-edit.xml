@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.claim.ClaimEdit"
+        datasource="claimDs"
+        messagesPack="com.company.accumed.web.claim">
+    <dsContext>
+        <datasource id="claimDs"
+                    class="com.company.accumed.entity.Claim"
+                    view="claim-edit">
+            <collectionDatasource id="claimLineDs"
+                                  property="claimLine"/>
+        </datasource>
+        <collectionDatasource id="providersDs"
+                              class="com.company.accumed.entity.Provider">
+            <query>
+                <![CDATA[select e from accumed$Provider e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="patientsDs"
+                              class="com.company.accumed.entity.Patient">
+            <query>
+                <![CDATA[select e from accumed$Patient e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="facilitiesDs"
+                              class="com.company.accumed.entity.Facility">
+            <query>
+                <![CDATA[select e from accumed$Facility e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid spacing="true">
+            <columns>
+                <column/>
+                <column flex="1.0"/>
+                <column/>
+                <column flex="1.0"/>
+                <column flex="0.0"/>
+                <column flex="0.0"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="Patient"/>
+                    <pickerField datasource="claimDs"
+                                 height="25px"
+                                 optionsDatasource="patientsDs"
+                                 property="patient"
+                                 width="100%"/>
+                    <label value="Referred By"/>
+                    <pickerField datasource="claimDs"
+                                 height="25px"
+                                 optionsDatasource="providersDs"
+                                 property="referredBy"
+                                 width="178px"/>
+                </row>
+                <row>
+                    <label value="Doctor"/>
+                    <pickerField datasource="claimDs"
+                                 height="25px"
+                                 optionsDatasource="providersDs"
+                                 property="provider"
+                                 width="100%"/>
+                    <label value="Claim Type"/>
+                    <lookupField datasource="claimDs"
+                                 height="25px"
+                                 property="claimType"
+                                 width="178px"/>
+                    <label value="Location / SLI"/>
+                    <textField datasource="claimDs"
+                               height="25px"
+                               property="location"
+                               width="178px"/>
+                </row>
+                <row>
+                    <label value="Facility"/>
+                    <textField datasource="claimDs"
+                               height="25px"
+                               optionsDatasource="facilitiesDs"
+                               property="facility"
+                               width="178px"/>
+                    <label value="Admit Date"/>
+                    <dateField datasource="claimDs"
+                               height="25px"
+                               property="admitDate"
+                               width="138px"/>
+                </row>
+                <row>
+                    <label value="Referring Lab"/>
+                    <textField datasource="claimDs"
+                               height="25px"
+                               property="referringLab"
+                               width="178px"/>
+                    <label value="Manual Review"/>
+                    <checkBox datasource="claimDs"
+                              height="25px"
+                              property="manualReview"
+                              width="178px"/>
+                </row>
+                <row>
+                    <groupBox id="claimLineBox"
+                              caption="msg://com.company.accumed.entity/Claim.claimLine"
+                              colspan="6">
+                        <table id="claimLineTable"
+                               editable="true"
+                               height="200px"
+                               width="100%">
+                            <actions>
+                                <action id="create"
+                                        caption="Add"
+                                        invoke="addClaimLine"
+                                        openType="DIALOG"/>
+                                <action id="edit"
+                                        openType="DIALOG"/>
+                                <action id="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="serviceCode"
+                                        editable="true"/>
+                                <column id="diagnosticCode"
+                                        editable="true"/>
+                                <column id="noOfServices"
+                                        editable="true"/>
+                                <column id="fee"
+                                        editable="true"/>
+                                <column id="serviceDate"
+                                        editable="true"/>
+                            </columns>
+                            <rows datasource="claimLineDs"/>
+                            <buttonsPanel>
+                                <button action="claimLineTable.create"/>
+                                <button action="claimLineTable.edit"/>
+                                <button action="claimLineTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

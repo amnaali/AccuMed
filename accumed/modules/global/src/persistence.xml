@@ -9,5 +9,7 @@
         <class>com.company.accumed.entity.Speciality</class>
         <class>com.company.accumed.entity.MinistryOfHealthOffice</class>
         <class>com.company.accumed.entity.PatientAdmission</class>
+        <class>com.company.accumed.entity.Claim</class>
+        <class>com.company.accumed.entity.ClaimLine</class>
     </persistence-unit>
 </persistence>

@@ -27,15 +27,11 @@ create table ACCUMED_PATIENT (
     HOME_PHONE varchar(20),
     WORK_PHONE varchar(20),
     CELL_PHONE varchar(20),
-    REFERRING_DOCTOR varchar(255),
-    FAMILY_DOCTOR varchar(255),
-    FACILITY_CODE varchar(255),
-    ADMIT_DATE timestamp,
+    FAMILY_DOCTOR_ID uuid,
     notes text,
     HN_CHECK_DATE timestamp,
     response text,
     HL7_PATIENT_ID text,
-    FAM_DOC_ID uuid,
     --
     primary key (ID)
 )^
@@ -82,9 +78,10 @@ create table ACCUMED_PROVIDER (
     POSTAL_CODE varchar(20),
     WORK_PHONE varchar(20),
     CELL_PHONE varchar(20),
-    GROUP_NUMBER integer,
+    FAX_NUMBER varchar(20),
+    GROUP_NUMBER varchar(10),
     PRIMARY_SPECIALTY_ID uuid,
-    MINISTRY_OF_HEALTH_OFFICE_ID uuid,
+    MINISTRY_OF_HEALTH_OFFICE varchar(5),
     --
     primary key (ID)
 )^
@@ -142,3 +139,49 @@ create table ACCUMED_PATIENT_ADMISSION (
     primary key (ID)
 )^
 -- end ACCUMED_PATIENT_ADMISSION
+
+-- begin ACCUMED_CLAIM
+create table ACCUMED_CLAIM (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer not null,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PATIENT_ID uuid,
+    REFERRED_BY_ID uuid,
+    PROVIDER_ID uuid,
+    CLAIM_TYPE integer,
+    LOCATION varchar(255),
+    FACILITY_ID uuid,
+    ADMIT_DATE date,
+    REFERRING_LAB varchar(255),
+    MANUAL_REVIEW boolean,
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_CLAIM
+-- begin ACCUMED_CLAIM_LINE
+create table ACCUMED_CLAIM_LINE (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer not null,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    CLAIM_ID uuid,
+    SERVICE_CODE varchar(255),
+    DIAGNOSTIC_CODE varchar(255),
+    NO_OF_SERVICES integer,
+    FEE double precision,
+    SERVICE_DATE date,
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_CLAIM_LINE
