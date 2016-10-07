@@ -1,0 +1,10 @@
+alter table ACCUMED_SERVICE_CODE add column DESCRIPTION varchar(255) not null default '' ;
+alter table ACCUMED_SERVICE_CODE add column FEE_GENERAL double precision ;
+alter table ACCUMED_SERVICE_CODE add column FEE_ASSISTANT double precision ;
+alter table ACCUMED_SERVICE_CODE add column UNIT_ASSISTANT double precision ;
+alter table ACCUMED_SERVICE_CODE add column FEE_SPECIALIST double precision ;
+alter table ACCUMED_SERVICE_CODE add column FEE_ANA double precision ;
+alter table ACCUMED_SERVICE_CODE add column UNITS_ANA double precision ;
+alter table ACCUMED_SERVICE_CODE add column FEE_NON_ANA double precision ;
+alter table ACCUMED_SERVICE_CODE add column UNITS_NON_ANA double precision ;
+alter table ACCUMED_SERVICE_CODE drop column SERVICE_NAME cascade ;

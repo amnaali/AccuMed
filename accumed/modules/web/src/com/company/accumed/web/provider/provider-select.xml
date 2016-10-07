@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="Select Provider"
+        class="com.company.accumed.web.provider.ProviderSelect"
+        messagesPack="com.company.accumed.web.provider">
+    <dsContext>
+        <collectionDatasource id="providersDs"
+                              class="com.company.accumed.entity.Provider"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Provider e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="selectProvider"/>
+    </actions>
+    <dialogMode closeable="true"
+                modal="true"/>
+    <layout>
+        <groupBox>
+            <hbox>
+                <lookupField id="selectedProvider"
+                             caption="Select Provider for Claims"
+                             height="25px"
+                             optionsDatasource="providersDs"
+                             width="300px"/>
+                <button id="selectProvider"
+                        align="BOTTOM_RIGHT"
+                        caption="Select Provider"
+                        invoke="selectProvider"/>
+            </hbox>
+        </groupBox>
+    </layout>
+</window>

@@ -12,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import com.haulmont.chile.core.annotations.NamePattern;
 
+@NamePattern("%s - %s|patient,facility")
 @Table(name = "ACCUMED_PATIENT_ADMISSION")
 @Entity(name = "accumed$PatientAdmission")
 public class PatientAdmission extends StandardEntity implements Comparable<PatientAdmission> {

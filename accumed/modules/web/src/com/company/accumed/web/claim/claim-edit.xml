@@ -12,26 +12,61 @@
                                   property="claimLine"/>
         </datasource>
         <collectionDatasource id="providersDs"
-                              class="com.company.accumed.entity.Provider">
+                              class="com.company.accumed.entity.Provider"
+                              view="_local">
             <query>
                 <![CDATA[select e from accumed$Provider e]]>
             </query>
         </collectionDatasource>
-        <collectionDatasource id="patientsDs"
-                              class="com.company.accumed.entity.Patient">
-            <query>
-                <![CDATA[select e from accumed$Patient e]]>
-            </query>
-        </collectionDatasource>
         <collectionDatasource id="facilitiesDs"
-                              class="com.company.accumed.entity.Facility">
+                              class="com.company.accumed.entity.Facility"
+                              view="_local">
             <query>
                 <![CDATA[select e from accumed$Facility e]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="patientsByNamesDs"
+                              class="com.company.accumed.entity.Patient"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Patient e where e.firstName like :custom$firstName AND e.lastName like :custom$lastName
+                                            AND e.memberNumber like :custom$memberNumber]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="patientsByBirthDateDs"
+                              class="com.company.accumed.entity.Patient"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Patient e where e.firstName like :custom$firstName AND e.lastName like :custom$lastName
+                                            AND e.memberNumber like :custom$memberNumber AND 
+                                            e.birthDate = :custom$birthDate]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="patientsByIdDs"
+                              class="com.company.accumed.entity.Patient"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$Patient e Where e.id = :custom$patientId]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="billableServiceCodesDs"
+                              class="com.company.accumed.entity.BillableServiceCode"
+                              view="billableServiceCode-view">
+            <query>
+                <![CDATA[select e from accumed$BillableServiceCode e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="quickServiceCodesDs"
+                              class="com.company.accumed.entity.QuickServiceCode"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$QuickServiceCode e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout expand="windowActions"
-            spacing="true">
+            spacing="true"
+            width="600px">
         <grid spacing="true">
             <columns>
                 <column/>
@@ -43,48 +78,103 @@
             </columns>
             <rows>
                 <row>
-                    <label value="Patient"/>
-                    <pickerField datasource="claimDs"
-                                 height="25px"
-                                 optionsDatasource="patientsDs"
-                                 property="patient"
-                                 width="100%"/>
-                    <label value="Referred By"/>
-                    <pickerField datasource="claimDs"
-                                 height="25px"
-                                 optionsDatasource="providersDs"
-                                 property="referredBy"
-                                 width="178px"/>
-                </row>
-                <row>
-                    <label value="Doctor"/>
-                    <pickerField datasource="claimDs"
-                                 height="25px"
-                                 optionsDatasource="providersDs"
-                                 property="provider"
-                                 width="100%"/>
                     <label value="Claim Type"/>
                     <lookupField datasource="claimDs"
                                  height="25px"
                                  property="claimType"
                                  width="178px"/>
+                </row>
+                <row>
+                    <groupBox caption="Search Patient"
+                              colspan="6">
+                        <hbox>
+                            <textField id="byMemberNumber"
+                                       caption="Health Card#"/>
+                            <dateField id="byBirthDate"
+                                       caption="Birth Date"
+                                       dateFormat="MM/dd/yyyy"
+                                       resolution="DAY"/>
+                            <textField id="byFirstName"
+                                       caption="First Name"/>
+                            <textField id="byLastName"
+                                       caption="Last Name"/>
+                            <button id="searchPatients"
+                                    align="BOTTOM_CENTER"
+                                    caption="Go"
+                                    invoke="refreshPatientList"/>
+                        </hbox>
+                    </groupBox>
+                </row>
+                <row id="patientList">
+                    <vbox colspan="6">
+                        <table id="patientsTable"
+                               align="MIDDLE_LEFT"
+                               columnControlVisible="false"
+                               contextMenuEnabled="false"
+                               height="100px"
+                               reorderingAllowed="false"
+                               width="100%">
+                            <actions>
+                                <action id="selectPatient"
+                                        invoke="selectPatient"/>
+                            </actions>
+                            <columns>
+                                <column id="memberNumber"
+                                        width="120"/>
+                                <column id="firstName"/>
+                                <column id="lastName"/>
+                                <column id="birthDate"
+                                        width="100">
+                                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter"
+                                               format="MM/dd/yyyy"/>
+                                </column>
+                                <column id="gender"
+                                        width="80"/>
+                                <column id="postalCode"
+                                        width="90"/>
+                            </columns>
+                            <rows datasource="patientsByNamesDs"/>
+                        </table>
+                    </vbox>
+                </row>
+                <row>
+                    <label value="Doctor"/>
+                    <lookupPickerField datasource="claimDs"
+                                       height="25px"
+                                       optionsDatasource="providersDs"
+                                       property="provider"
+                                       width="100%"/>
+                    <label value="Referred By"/>
+                    <lookupPickerField datasource="claimDs"
+                                       height="25px"
+                                       optionsDatasource="providersDs"
+                                       property="referredBy"
+                                       width="178px"/>
+                </row>
+                <row>
                     <label value="Location / SLI"/>
                     <textField datasource="claimDs"
                                height="25px"
                                property="location"
                                width="178px"/>
+                    <label value="Facility"/>
+                    <lookupPickerField datasource="claimDs"
+                                       height="25px"
+                                       optionsDatasource="facilitiesDs"
+                                       property="facility"
+                                       width="178px"/>
                 </row>
                 <row>
-                    <label value="Facility"/>
-                    <textField datasource="claimDs"
-                               height="25px"
-                               optionsDatasource="facilitiesDs"
-                               property="facility"
-                               width="178px"/>
+                    <label value="Manual Review"/>
+                    <checkBox datasource="claimDs"
+                              height="25px"
+                              property="manualReview"
+                              width="178px"/>
                     <label value="Admit Date"/>
                     <dateField datasource="claimDs"
                                height="25px"
                                property="admitDate"
+                               resolution="DAY"
                                width="138px"/>
                 </row>
                 <row>
@@ -93,17 +183,22 @@
                                height="25px"
                                property="referringLab"
                                width="178px"/>
-                    <label value="Manual Review"/>
-                    <checkBox datasource="claimDs"
-                              height="25px"
-                              property="manualReview"
-                              width="178px"/>
+                    <label value="Last Modified "/>
+                    <textField datasource="claimDs"
+                               editable="false"
+                               height="25px"
+                               property="lastModified"
+                               width="250px"/>
                 </row>
                 <row>
                     <groupBox id="claimLineBox"
+                              align="TOP_CENTER"
                               caption="msg://com.company.accumed.entity/Claim.claimLine"
                               colspan="6">
                         <table id="claimLineTable"
+                               align="TOP_CENTER"
+                               columnControlVisible="false"
+                               contextMenuEnabled="false"
                                editable="true"
                                height="200px"
                                width="100%">
@@ -129,9 +224,9 @@
                                         editable="true"/>
                             </columns>
                             <rows datasource="claimLineDs"/>
+                            <rowsCount/>
                             <buttonsPanel>
                                 <button action="claimLineTable.create"/>
-                                <button action="claimLineTable.edit"/>
                                 <button action="claimLineTable.remove"/>
                             </buttonsPanel>
                         </table>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.servicecode.ServiceCodeBrowse"
+        focusComponent="serviceCodesTable"
+        lookupComponent="serviceCodesTable"
+        messagesPack="com.company.accumed.web.servicecode">
+    <dsContext>
+        <collectionDatasource id="serviceCodesDs"
+                              class="com.company.accumed.entity.ServiceCode"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$ServiceCode e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="serviceCodesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="serviceCodesTable"
+                datasource="serviceCodesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="serviceCodesTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="serviceCode"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="serviceCodesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="serviceCodesTable.create"/>
+                <button id="editBtn"
+                        action="serviceCodesTable.edit"/>
+                <button id="removeBtn"
+                        action="serviceCodesTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

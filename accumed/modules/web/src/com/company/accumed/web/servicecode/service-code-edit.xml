@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.servicecode.ServiceCodeEdit"
+        datasource="serviceCodeDs"
+        messagesPack="com.company.accumed.web.servicecode">
+    <dsContext>
+        <datasource id="serviceCodeDs"
+                    class="com.company.accumed.entity.ServiceCode"
+                    view="serviceCode-edit">
+            <collectionDatasource id="billableCodesDs"
+                                  property="billableCodes"/>
+        </datasource>
+        <collectionDatasource id="serviceCodeRulesDs"
+                              class="com.company.accumed.entity.ServiceCodeRule"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$ServiceCodeRule e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="addServiceCodeRule"
+                invoke="addServiceCodeRule"/>
+        <action id="addPhysicianOrSpecialist"
+                invoke="addPhysicianOrSpecialist"/>
+        <action id="addPhysicianAssistant"
+                invoke="addPhysicianAssistant"/>
+        <action id="addAnesthesiologist"
+                invoke="addAnesthesiologist"/>
+    </actions>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid spacing="true"
+              width="573px">
+            <columns>
+                <column/>
+                <column flex="1.0"/>
+                <column/>
+                <column flex="1.0"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="Service Code"/>
+                    <textField datasource="serviceCodeDs"
+                               height="25px"
+                               property="serviceCode"
+                               width="178px"/>
+                </row>
+                <row>
+                    <label value="Description"/>
+                    <textArea colspan="3"
+                              datasource="serviceCodeDs"
+                              property="description"
+                              width="100%"/>
+                </row>
+                <row>
+                    <vbox colspan="4">
+                        <hbox>
+                            <linkButton id="addPhysician"
+                                        action="addPhysicianOrSpecialist"
+                                        caption="Physician / Specialist |"/>
+                            <linkButton id="addPhysicianAssistant"
+                                        action="addPhysicianAssistant"
+                                        caption="Phys. Assistant |"/>
+                            <linkButton id="addAnesthesiologist"
+                                        action="addAnesthesiologist"
+                                        caption="Anesthesiologist |"/>
+                        </hbox>
+                        <table id="billableCodes"
+                               contextMenuEnabled="false"
+                               editable="true"
+                               height="138px"
+                               reorderingAllowed="false"
+                               width="561px">
+                            <columns>
+                                <column id="billableCode"
+                                        width="70"/>
+                                <column id="codeType"/>
+                                <column id="fee"
+                                        caption="Rate"
+                                        editable="true"
+                                        width="100"/>
+                                <column id="units"
+                                        caption="Min. Units"
+                                        editable="true"
+                                        width="100"/>
+                            </columns>
+                            <rows datasource="billableCodesDs"/>
+                        </table>
+                    </vbox>
+                </row>
+                <row>
+                    <vbox colspan="3">
+                        <twinColumn id="rules"
+                                    addAllBtnEnabled="true"
+                                    caption="Validation Rules"
+                                    datasource="serviceCodeDs"
+                                    optionsDatasource="serviceCodeRulesDs"
+                                    property="rules"/>
+                    </vbox>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,1 @@
+alter table ACCUMED_BILLABLE_SERVICE_CODE add column QUICK_SERVICE_CODE_ID uuid ;

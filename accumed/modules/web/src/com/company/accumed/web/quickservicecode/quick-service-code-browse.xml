@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.quickservicecode.QuickServiceCodeBrowse"
+        focusComponent="quickServiceCodesTable"
+        lookupComponent="quickServiceCodesTable"
+        messagesPack="com.company.accumed.web.quickservicecode">
+    <dsContext>
+        <collectionDatasource id="quickServiceCodesDs"
+                              class="com.company.accumed.entity.QuickServiceCode"
+                              view="quickServiceCode-view">
+            <query>
+                <![CDATA[select e from accumed$QuickServiceCode e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="quickServiceCodesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="quickServiceCodesTable"
+                datasource="quickServiceCodesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="quickServiceCodesTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="quickCode"/>
+                <column id="description"/>
+                <column id="numberOfServices"/>
+                <column id="diagnosticCode"/>
+                <column id="percentageOfFee"/>
+                <column id="defaultCode"/>
+            </columns>
+            <rows datasource="quickServiceCodesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="quickServiceCodesTable.create"/>
+                <button id="editBtn"
+                        action="quickServiceCodesTable.edit"/>
+                <button id="removeBtn"
+                        action="quickServiceCodesTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

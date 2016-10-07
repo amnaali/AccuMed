@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.accumed.web.mainwindow.ExtAppMainWindow"
+        extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <dsContext>
+        <collectionDatasource id="providersDs"
+                              class="com.company.accumed.entity.Provider">
+            <query>
+                <![CDATA[select e from accumed$Provider e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="selectProvider"/>
+    </actions>
+    <layout>
+        <vbox ext:index="1"
+              height="28px">
+            <hbox>
+                <label id="currentProvider"
+                       stylename="h2"
+                       value="Current Provider :  "
+                       width="200px"/>
+                <lookupField id="selectedProvider"
+                             height="25px"
+                             optionsDatasource="providersDs"
+                             width="300px"/>
+            </hbox>
+        </vbox>
+        <split id="foldersSplit"
+               maxSplitPosition="0px"
+               minSplitPosition="0px"/>
+    </layout>
+</window>

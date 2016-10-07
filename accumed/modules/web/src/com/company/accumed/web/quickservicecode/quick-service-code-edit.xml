@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.accumed.web.quickservicecode.QuickServiceCodeEdit"
+        datasource="quickServiceCodeDs"
+        messagesPack="com.company.accumed.web.quickservicecode">
+    <dsContext>
+        <datasource id="quickServiceCodeDs"
+                    class="com.company.accumed.entity.QuickServiceCode"
+                    view="quickServiceCode-view">
+            <collectionDatasource id="serviceCodesDs"
+                                  property="serviceCodes"/>
+        </datasource>
+        <collectionDatasource id="billableServiceCodesDs"
+                              class="com.company.accumed.entity.BillableServiceCode"
+                              view="billableServiceCode-view">
+            <query>
+                <![CDATA[select e from accumed$BillableServiceCode e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid spacing="true">
+            <columns count="2"/>
+            <rows>
+                <row>
+                    <label value="Quick Code"/>
+                    <textField datasource="quickServiceCodeDs"
+                               property="quickCode"
+                               width="250px"/>
+                </row>
+                <row>
+                    <label value="Description"/>
+                    <textArea datasource="quickServiceCodeDs"
+                              property="description"
+                              width="100%"/>
+                </row>
+                <row>
+                    <label value="Number of Services"/>
+                    <textField datasource="quickServiceCodeDs"
+                               property="numberOfServices"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="Diagnostic Code"/>
+                    <textField datasource="quickServiceCodeDs"
+                               property="diagnosticCode"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="Percentage of Fee"/>
+                    <textField datasource="quickServiceCodeDs"
+                               property="percentageOfFee"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="Default Code"/>
+                    <checkBox datasource="quickServiceCodeDs"
+                              property="defaultCode"
+                              width="100%"/>
+                </row>
+                <row>
+                    <label value="Service Codes"/>
+                    <twinColumn datasourcec="quickServiceCodeDs"
+                                property="serviceCodes"
+                                optionsDatasource="billableServiceCodesDs"/>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

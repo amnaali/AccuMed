@@ -152,7 +152,7 @@ configure(webModule) {
         webcontent("com.haulmont.cuba:cuba-web:$cubaVersion:web@zip")
         testCompile("com.haulmont.cuba:cuba-client-tests:$cubaVersion")
         compile('org.vaadin.addons:simplecalendar:0.7.6')
-
+		compile("org.vaadin.addons:tuning-datefield:0.16.0")
     }
 
     task webArchive(type: Zip) {

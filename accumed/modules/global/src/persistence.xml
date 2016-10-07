@@ -11,5 +11,9 @@
         <class>com.company.accumed.entity.PatientAdmission</class>
         <class>com.company.accumed.entity.Claim</class>
         <class>com.company.accumed.entity.ClaimLine</class>
+        <class>com.company.accumed.entity.ServiceCode</class>
+        <class>com.company.accumed.entity.ServiceCodeRule</class>
+        <class>com.company.accumed.entity.BillableServiceCode</class>
+        <class>com.company.accumed.entity.QuickServiceCode</class>
     </persistence-unit>
 </persistence>

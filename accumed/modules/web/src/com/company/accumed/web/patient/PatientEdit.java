@@ -1,6 +1,7 @@
 package com.company.accumed.web.patient;
 
 import com.company.accumed.entity.Facility;
+import com.company.accumed.service.ValidationService;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.components.*;
@@ -41,7 +42,6 @@ public class PatientEdit extends AbstractEditor<Patient> {
             public Component generateCell(Entity entity) {
                 LookupPickerField  field = (LookupPickerField ) componentsFactory.createComponent(LookupPickerField.NAME);
                 field.setDatasource(pAdmissionTable.getItemDatasource(entity), "facility");
-                field.setOptionsDatasource(facilityDs);
                 field.setEditable(true);
                 field.setId("facility");
                 field.addLookupAction();

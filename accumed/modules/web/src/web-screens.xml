@@ -29,4 +29,20 @@
             template="com/company/accumed/web/claim/claim-edit.xml"/>
     <screen id="accumed$ClaimLine.edit"
             template="com/company/accumed/web/claimline/claim-line-edit.xml"/>
+    <screen id="calendar"
+            template="com/company/accumed/web/claim/calendar.xml"/>
+    <screen id="mainWindow"
+            template="com/company/accumed/web/mainwindow/ext-mainwindow.xml"/>
+    <screen id="accumed$Provider.select"
+            template="com/company/accumed/web/provider/provider-select.xml"/>
+    <screen id="accumed$ServiceCode.browse"
+            template="com/company/accumed/web/servicecode/service-code-browse.xml"/>
+    <screen id="accumed$ServiceCode.edit"
+            template="com/company/accumed/web/servicecode/service-code-edit.xml"/>
+    <screen id="accumed$ServiceCodeRule.browse"
+            template="com/company/accumed/web/servicecoderule/service-code-rule-browse.xml"/>
+    <screen id="accumed$QuickServiceCode.browse"
+            template="com/company/accumed/web/quickservicecode/quick-service-code-browse.xml"/>
+    <screen id="accumed$QuickServiceCode.edit"
+            template="com/company/accumed/web/quickservicecode/quick-service-code-edit.xml"/>
 </screen-config>

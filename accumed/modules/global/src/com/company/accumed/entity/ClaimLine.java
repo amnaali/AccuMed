@@ -1,15 +1,10 @@
 package com.company.accumed.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import com.haulmont.cuba.core.entity.StandardEntity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Table(name = "ACCUMED_CLAIM_LINE")
 @Entity(name = "accumed$ClaimLine")
@@ -20,8 +15,9 @@ public class ClaimLine extends StandardEntity {
     @JoinColumn(name = "CLAIM_ID")
     protected Claim claim;
 
-    @Column(name = "SERVICE_CODE")
-    protected String serviceCode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SERVICE_CODE_ID")
+    protected BillableServiceCode serviceCode;
 
     @Column(name = "DIAGNOSTIC_CODE")
     protected String diagnosticCode;
@@ -36,21 +32,21 @@ public class ClaimLine extends StandardEntity {
     @Column(name = "SERVICE_DATE")
     protected Date serviceDate;
 
+    public BillableServiceCode getServiceCode() {
+        return serviceCode;
+    }
+
+    public void setServiceCode(BillableServiceCode serviceCode) {
+        this.serviceCode = serviceCode;
+    }
+
+
     public void setClaim(Claim claim) {
         this.claim = claim;
     }
 
     public Claim getClaim() {
         return claim;
-    }
-
-
-    public void setServiceCode(String serviceCode) {
-        this.serviceCode = serviceCode;
-    }
-
-    public String getServiceCode() {
-        return serviceCode;
     }
 
     public void setDiagnosticCode(String diagnosticCode) {
@@ -85,5 +81,34 @@ public class ClaimLine extends StandardEntity {
         return serviceDate;
     }
 
+    @Transient
+    public Gender getPatientGender() {
+        return claim.getPatientGender();
+    }
 
+    @Transient
+    public Provider getReferredBy() {
+        return claim.getReferredBy();
+    }
+
+    @Transient
+    public Facility getFacilityNumber() {
+        return claim.getFacility();
+    }
+
+    @Transient
+    public Date getAdmitDate() {
+        return claim.getAdmitDate();
+    }
+
+    @Transient
+    public int getPatientAge() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy");  //kludgy way to get year!
+        return (serviceDate != null) ? Integer.parseInt(df.format(serviceDate)) - claim.getPatientBirthYear() : 0;
+    }
+
+    @Transient
+    public boolean getManualReview() {
+        return claim.getManualReview();
+    }
 }

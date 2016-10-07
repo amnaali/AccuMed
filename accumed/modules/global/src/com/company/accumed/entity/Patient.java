@@ -1,30 +1,22 @@
 package com.company.accumed.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import com.haulmont.cuba.core.global.DesignSupport;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
+
 import com.haulmont.cuba.core.entity.BaseUuidEntity;
 import com.haulmont.cuba.core.entity.Versioned;
 import com.haulmont.cuba.core.entity.SoftDelete;
 import com.haulmont.cuba.core.entity.Updatable;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import java.util.Set;
-import javax.persistence.OneToMany;
 
-@NamePattern("%s %s|firstName,lastName")
+@NamePattern("%s %s [%s]|firstName,lastName,memberNumber")
 @DesignSupport("{'imported':true}")
 @Table(name = "ACCUMED_PATIENT")
 @Entity(name = "accumed$Patient")
@@ -128,6 +120,8 @@ public class Patient extends BaseUuidEntity implements Versioned, SoftDelete, Up
 
     @Column(name = "UPDATED_BY", length = 50)
     protected String updatedBy;
+
+
 
     public Provider getFamilyDoctor() {
         return familyDoctor;

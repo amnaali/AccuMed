@@ -1,77 +1,73 @@
 package com.company.accumed.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import javax.persistence.*;
+
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.chile.core.annotations.NamePattern;
 
-@NamePattern("%s %s|lastName,firstName")
+@NamePattern("%s %s %s [%s]|title,firstName,lastName,groupNumber")
 @Table(name = "ACCUMED_PROVIDER")
 @Entity(name = "accumed$Provider")
 public class Provider extends StandardEntity {
     private static final long serialVersionUID = -7988232986164874589L;
 
     @Column(name = "PROVIDER_ID", length = 20)
-    protected String providerId;
+    public String providerId;
 
     @Column(name = "TITLE", length = 20)
-    protected String title;
+    public String title;
 
     @Column(name = "FIRST_NAME", nullable = false, length = 100)
-    protected String firstName;
+    public String firstName;
 
     @Column(name = "LAST_NAME", nullable = false, length = 100)
-    protected String lastName;
+    public String lastName;
 
     @Column(name = "MIDDLE_NAME", length = 100)
-    protected String middleName;
+    public String middleName;
 
     @Column(name = "EMAIL")
-    protected String email;
+    public String email;
 
     @Column(name = "ADDRESS_LINE1", length = 100)
-    protected String addressLine1;
+    public String addressLine1;
 
     @Column(name = "ADDRESS_LINE2", length = 100)
-    protected String addressLine2;
+    public String addressLine2;
 
     @Column(name = "CITY", length = 100)
-    protected String city;
+    public String city;
 
     @Column(name = "PROVINCE", length = 100)
-    protected String province;
+    public String province;
 
     @Column(name = "COUNTRY", length = 20)
-    protected String country;
+    public String country;
 
     @Column(name = "POSTAL_CODE", length = 20)
-    protected String postalCode;
+    public String postalCode;
 
     @Column(name = "WORK_PHONE", length = 20)
-    protected String workPhone;
+    public String workPhone;
 
     @Column(name = "CELL_PHONE", length = 20)
-    protected String cellPhone;
+    public String cellPhone;
 
     @Column(name = "FAX_NUMBER", length = 20)
-    protected String faxNumber;
+    public String faxNumber;
 
     @Column(name = "GROUP_NUMBER", length = 10)
-    protected String groupNumber;
+    public String groupNumber;
 
     @ManyToOne
     @JoinColumn(name = "PRIMARY_SPECIALTY_ID")
-    protected Speciality primarySpecialty;
+    public Speciality primarySpecialty;
 
     @Column(name = "MINISTRY_OF_HEALTH_OFFICE", length = 5)
-    protected String ministryOfHealthOffice;
+    public String ministryOfHealthOffice;
 
     public String getGroupNumber() {
         return groupNumber;

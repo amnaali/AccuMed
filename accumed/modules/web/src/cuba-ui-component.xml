@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<components>
+    <component>
+        <name>MultiSelectCalendar</name>
+        <componentLoader>com.company.accumed.gui.xml.layout.loaders.MultiSelectCalendarLoader</componentLoader>
+        <class>com.company.accumed.web.gui.components.WebMultiSelectCalendar</class>
+    </component>
+    <component>
+        <name>MultiDate</name>
+        <componentLoader>com.company.accumed.gui.xml.layout.loaders.MultiDateLoader</componentLoader>
+        <class>com.company.accumed.web.gui.components.WebMultiDate</class>
+    </component>
+</components>

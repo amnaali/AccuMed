@@ -3,7 +3,6 @@
     <view class="com.company.accumed.entity.Patient"
           extends="_minimal"
           name="patientList">
-        <property name="memberNumber"/>
         <property name="birthDate"/>
         <property name="gender"/>
         <property name="city"/>
@@ -46,20 +45,18 @@
           name="claim-view">
         <property name="patient"
                   view="_minimal">
-            <property name="memberNumber"/>
         </property>
-        <property name="referredBy"
-                  view="_minimal"/>
         <property name="facility"
                   view="_minimal"/>
         <property name="provider"
-                  view="_minimal"/>
+                  view="_minimal">
+            <property name="city"/>
+            <property name="groupNumber"/>
+        </property>
     </view>
     <view class="com.company.accumed.entity.Claim"
           extends="_local"
           name="claim-edit">
-        <property name="patient"
-                  view="_minimal"/>
         <property name="referredBy"
                   view="_minimal"/>
         <property name="facility"
@@ -68,5 +65,41 @@
                   view="_local"/>
         <property name="provider"
                   view="_minimal"/>
+        <property name="patient"
+                  view="_minimal">
+            <property name="birthDate"/>
+            <property name="gender"/>
+            <property name="postalCode"/>
+        </property>
+    </view>
+    <view class="com.company.accumed.entity.ServiceCode"
+          extends="_local"
+          name="serviceCode-edit">
+        <property name="rules"
+                  view="_minimal">
+            <property name="propertyName"/>
+            <property name="ruleOperator"/>
+            <property name="propertyValue"/>
+        </property>
+        <property name="billableCodes"
+                  view="_minimal">
+            <property name="billableCode"/>
+            <property name="codeType"/>
+            <property name="fee"/>
+            <property name="units"/>
+        </property>
+    </view>
+    <view class="com.company.accumed.entity.QuickServiceCode"
+          extends="_local"
+          name="quickServiceCode-view">
+        <property name="serviceCodes"
+                  view="_minimal">
+            <property name="billableCode"/>
+        </property>
+    </view>
+    <view class="com.company.accumed.entity.BillableServiceCode"
+          extends="_minimal"
+          name="billableServiceCode-view">
+        <property name="billableCode"/>
     </view>
 </views>

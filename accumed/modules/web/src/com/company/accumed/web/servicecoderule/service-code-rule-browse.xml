@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.accumed.web.servicecoderule.ServiceCodeRuleBrowse"
+        focusComponent="serviceCodeRulesTable"
+        lookupComponent="serviceCodeRulesTable"
+        messagesPack="com.company.accumed.web.servicecoderule">
+    <dsContext>
+        <datasource id="serviceCodeRuleDs"
+                    class="com.company.accumed.entity.ServiceCodeRule"
+                    view="_local"/>
+        <collectionDatasource id="serviceCodeRulesDs"
+                              class="com.company.accumed.entity.ServiceCodeRule"
+                              view="_local">
+            <query>
+                <![CDATA[select e from accumed$ServiceCodeRule e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="serviceCodeRulesTable"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="serviceCodeRulesTable"
+                        datasource="serviceCodeRulesDs">
+                    <properties include=".*"/>
+                </filter>
+                <table id="serviceCodeRulesTable"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="ruleName"/>
+                        <column id="ruleOperator"/>
+                        <column id="propertyName"/>
+                        <column id="propertyValue"/>
+                        
+                    </columns>
+                    <rows datasource="serviceCodeRulesDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="serviceCodeRulesTable.create"/>
+                        <button id="editBtn"
+                                action="serviceCodeRulesTable.edit"/>
+                        <button id="removeBtn"
+                                action="serviceCodeRulesTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </vbox>
+            <vbox id="editBox"
+                  expand="fieldGroupBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <vbox id="fieldGroupBox">
+                    <groupBox id="fieldGroup">
+                        <textField id="ruleName"
+                                   caption="Rule Name"
+                                   datasource="serviceCodeRuleDs"
+                                   property="ruleName"/>
+                        <lookupField id="propertyName"
+                                     caption="Property Name"
+                                     datasource="serviceCodeRuleDs"
+                                     property="propertyName"/>
+                        <lookupField id="ruleOperator"
+                                     caption="Rule Operator"
+                                     datasource="serviceCodeRuleDs"
+                                     property="ruleOperator"/>
+                        <textField id="propertyValue"
+                                   caption="Property Value"
+                                   datasource="serviceCodeRuleDs"
+                                   property="propertyValue"/>
+                        
+                    </groupBox>
+                </vbox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            action="save"/>
+                    <button id="cancelBtn"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

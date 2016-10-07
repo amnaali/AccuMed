@@ -137,8 +137,7 @@ create table ACCUMED_PATIENT_ADMISSION (
     PATIENT_ID uuid,
     --
     primary key (ID)
-)^
--- end ACCUMED_PATIENT_ADMISSION
+)^-- end ACCUMED_PATIENT_ADMISSION
 
 -- begin ACCUMED_CLAIM
 create table ACCUMED_CLAIM (
@@ -176,7 +175,7 @@ create table ACCUMED_CLAIM_LINE (
     DELETED_BY varchar(50),
     --
     CLAIM_ID uuid,
-    SERVICE_CODE varchar(255),
+    SERVICE_CODE_ID uuid,
     DIAGNOSTIC_CODE varchar(255),
     NO_OF_SERVICES integer,
     FEE double precision,
@@ -185,3 +184,88 @@ create table ACCUMED_CLAIM_LINE (
     primary key (ID)
 )^
 -- end ACCUMED_CLAIM_LINE
+-- begin ACCUMED_SERVICE_CODE
+create table ACCUMED_SERVICE_CODE (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer not null,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    SERVICE_CODE varchar(10) not null,
+    DESCRIPTION varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_SERVICE_CODE
+-- begin ACCUMED_SERVICE_CODE_RULE
+create table ACCUMED_SERVICE_CODE_RULE (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer not null,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    RULE_NAME varchar(255),
+    PROPERTY_NAME varchar(255) not null,
+    PROPERTY_VALUE varchar(255),
+    SERVICE_CODE_ID uuid,
+    RULE_OPERATOR varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_SERVICE_CODE_RULE
+-- begin ACCUMED_BILLABLE_SERVICE_CODE
+create table ACCUMED_BILLABLE_SERVICE_CODE (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer not null,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    BILLABLE_CODE varchar(255) not null,
+    CODE_TYPE varchar(50) not null,
+    FEE double precision not null,
+    UNITS double precision not null,
+    SERVICE_CODE_ID uuid not null,
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_BILLABLE_SERVICE_CODE
+-- begin ACCUMED_QUICK_SERVICE_CODE
+create table ACCUMED_QUICK_SERVICE_CODE (
+    ID uuid,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer not null,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    QUICK_CODE varchar(255) not null,
+    DESCRIPTION text,
+    NUMBER_OF_SERVICES integer,
+    DIAGNOSTIC_CODE varchar(255),
+    PERCENTAGE_OF_FEE integer,
+    DEFAULT_CODE boolean,
+    --
+    primary key (ID)
+)^
+-- end ACCUMED_QUICK_SERVICE_CODE
+-- begin ACCUMED_QUICK_SERVICE_CODE_BILLABLE_SERVICE_CODE_LINK
+create table ACCUMED_QUICK_SERVICE_CODE_BILLABLE_SERVICE_CODE_LINK (
+    QUICK_SERVICE_CODE_ID uuid,
+    BILLABLE_SERVICE_CODE_ID uuid,
+    primary key (QUICK_SERVICE_CODE_ID, BILLABLE_SERVICE_CODE_ID)
+)^
+-- end ACCUMED_QUICK_SERVICE_CODE_BILLABLE_SERVICE_CODE_LINK

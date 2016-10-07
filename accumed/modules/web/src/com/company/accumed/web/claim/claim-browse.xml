@@ -30,14 +30,9 @@
             </actions>
             <columns>
                 <column id="patient"/>
-                <column id="referredBy"/>
-                <column id="provider"/>
                 <column id="claimType"/>
-                <column id="location"/>
-                <column id="facility"/>
                 <column id="admitDate"/>
-                <column id="referringLab"/>
-                <column id="manualReview"/>
+                <column id="provider"/>
             </columns>
             <rows datasource="claimsDs"/>
             <rowsCount/>

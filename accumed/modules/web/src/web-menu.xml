@@ -3,10 +3,17 @@
     <menu id="application"
           insertBefore="administration">
         <item id="accumed$Patient.browse"/>
-        <item id="accumed$Facility.browse"/>
-        <item id="accumed$MinistryOfHealthOffice.browse"/>
-        <item id="accumed$Speciality.browse"/>
         <item id="accumed$Provider.browse"/>
         <item id="accumed$Claim.browse"/>
+        <menu id="maintenance">
+            <item id="accumed$Speciality.browse"/>
+            <item id="accumed$MinistryOfHealthOffice.browse"/>
+            <item id="accumed$Facility.browse"/>
+        </menu>
+        <item id="accumed$Provider.select"
+              openType="DIALOG"/>
+        <item id="accumed$ServiceCode.browse"/>
+        <item id="accumed$ServiceCodeRule.browse"/>
+        <item id="accumed$QuickServiceCode.browse"/>
     </menu>
 </menu-config>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
+    <entities>
+        <entity class="com.company.accumed.entity.Patient">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.Facility">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.Provider">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.Speciality">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.MinistryOfHealthOffice">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.PatientAdmission">
+            <include re=".*"/>
+            <include name="facility"/>
+        </entity>
+        <entity class="com.company.accumed.entity.Claim">
+            <include re=".*"/>
+            <include name="patient"/>
+            <include name="provider"/>
+            <include name="facility"/>
+        </entity>
+        <entity class="com.company.accumed.entity.ClaimLine">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.ServiceCode">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.ServiceCodeRule">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.BillableServiceCode">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.company.accumed.entity.QuickServiceCode">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>
